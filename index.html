@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รับอั่งเปา</title>
+</head>
+<body>
+  <h1>คลิกเพื่อรับอั่งเปาและดูตำแหน่งของคุณ</h1>
+  <button onclick="getLocation()">รับอั่งเปา</button>
+  <p id="location"></p>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        document.getElementById("location").innerHTML = "เบราว์เซอร์ของคุณไม่รองรับ Geolocation";
+      }
+    }
+
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      document.getElementById("location").innerHTML = `
+        🎉 ยินดีด้วย! คุณได้รับอั่งเปา 🎉<br>
+        📍 ตำแหน่งของคุณ: <br>
+        ละติจูด: ${latitude}<br>
+        ลองจิจูด: ${longitude}<br>
+        <a href="https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}" target="_blank">
+          ดูแผนที่ของคุณ
+        </a>
+      `;
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          document.getElementById("location").innerHTML = "คุณปฏิเสธการเข้าถึงตำแหน่งของคุณ";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          document.getElementById("location").innerHTML = "ไม่สามารถเข้าถึงตำแหน่งของคุณได้";
+          break;
+        case error.TIMEOUT:
+          document.getElementById("location").innerHTML = "การร้องขอใช้เวลานานเกินไป";
+          break;
+        default:
+          document.getElementById("location").innerHTML = "เกิดข้อผิดพลาดที่ไม่ทราบ";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
