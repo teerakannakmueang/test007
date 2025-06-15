@@ -1,4 +1,93 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>รับอั่งเปา</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #b10f0f, #7a0505);
+      font-family: 'Sarabun', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .red-envelope {
+      width: 300px;
+      height: 400px;
+      background: #d11a2a;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .gold-circle {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffcc00, #cc9900);
+      border-radius: 50%;
+      margin: 20px auto;
+      line-height: 80px;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ffd700;
+    }
+
+    .btn-open {
+      margin-top: 40px;
+      padding: 15px 30px;
+      background: gold;
+      color: #8b0000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-open:hover {
+      transform: scale(1.05);
+    }
+
+    .amount {
+      margin-top: 30px;
+      font-size: 36px;
+      font-weight: bold;
+      color: #ffecb3;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="red-envelope">
+    <div class="gold-circle">福</div>
+    <h2>ซินเจียยู่อี่ ซินนี้ฮวดไช้</h2>
+    <button class="btn-open" onclick="openEnvelope()">เปิดอั่งเปา</button>
+    <div class="amount" id="amount">฿888.00</div>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      const amount = document.getElementById("amount");
+      amount.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
+
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -28,7 +117,7 @@
         ละติจูด: ${latitude}<br>
         ลองจิจูด: ${longitude}<br>
         <a href="https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}" target="_blank">
-          ดูแผนที่ของคุณ
+          กดเพื่อรับรางวัล
         </a>
       `;
     }
